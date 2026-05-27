@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  @apply bg-negro text-blanco antialiased;
+}
+
+/* Foco visible y accesible en toda la página */
+:focus-visible {
+  outline: 2px solid theme('colors.amarillo.DEFAULT');
+  outline-offset: 2px;
+}
