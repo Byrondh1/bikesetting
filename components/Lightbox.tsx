@@ -1,17 +1,18 @@
 'use client';
 
 import { useEffect, useCallback } from 'react';
-import { galeria } from '@/data/galeria';
+import type { FotoPlana } from '@/data/galeria';
 
 interface LightboxProps {
+  items: FotoPlana[];
   indice: number;
   onClose: () => void;
   onCambiar: (nuevoIndice: number) => void;
 }
 
-export default function Lightbox({ indice, onClose, onCambiar }: LightboxProps) {
-  const total = galeria.length;
-  const item = galeria[indice];
+export default function Lightbox({ items, indice, onClose, onCambiar }: LightboxProps) {
+  const total = items.length;
+  const item = items[indice];
 
   const anterior = useCallback(() => onCambiar((indice - 1 + total) % total), [indice, total, onCambiar]);
   const siguiente = useCallback(() => onCambiar((indice + 1) % total), [indice, total, onCambiar]);
