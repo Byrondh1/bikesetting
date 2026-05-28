@@ -1,9 +1,11 @@
+import Reveal from './Reveal';
+
 export default function Nosotros() {
   return (
     <section id="nosotros" className="bg-negro-soft py-20">
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid items-start gap-12 lg:grid-cols-2">
-          <div>
+          <Reveal variante="left">
             <h2 className="text-3xl font-bold sm:text-4xl">
               Sobre <span className="text-amarillo">nosotros</span>
             </h2>
@@ -20,16 +22,26 @@ export default function Nosotros() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <span className="inline-flex items-center gap-2 rounded-lg border border-amarillo/40 bg-amarillo/10 px-4 py-2 text-sm font-semibold text-amarillo">
+              <Reveal
+                variante="pop"
+                delay={150}
+                as="span"
+                className="inline-flex items-center gap-2 rounded-lg border border-amarillo/40 bg-amarillo/10 px-4 py-2 text-sm font-semibold text-amarillo"
+              >
                 Mecánico certificado Shimano
-              </span>
-              <span className="inline-flex items-center gap-2 rounded-lg border border-rojo/40 bg-rojo/10 px-4 py-2 text-sm font-semibold text-rojo">
+              </Reveal>
+              <Reveal
+                variante="pop"
+                delay={300}
+                as="span"
+                className="inline-flex items-center gap-2 rounded-lg border border-rojo/40 bg-rojo/10 px-4 py-2 text-sm font-semibold text-rojo"
+              >
                 Experiencia en la Vuelta a Nariño
-              </span>
+              </Reveal>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="space-y-6">
+          <Reveal variante="right" className="space-y-6">
             <ul className="space-y-4">
               {[
                 'Únicos en la ciudad: servicio especializado que no encuentras en otro lado.',
@@ -54,7 +66,7 @@ export default function Nosotros() {
                 — Mecánico certificado Shimano
               </footer>
             </blockquote>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import { contacto } from '@/data/contacto';
 import { buildWhatsappUrl } from '@/lib/whatsapp';
+import Reveal from './Reveal';
 
 export default function Contacto() {
   const items = [
@@ -17,17 +18,17 @@ export default function Contacto() {
   return (
     <section id="contacto" className="bg-negro py-20">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl">
           <h2 className="text-3xl font-bold sm:text-4xl">
             <span className="text-amarillo">Contáctanos</span>
           </h2>
           <p className="mt-4 text-blanco/70">
             Visítanos en El Ángel, Carchi o escríbenos. Estamos para ayudarte.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-2">
-          <ul className="space-y-5">
+          <Reveal variante="left" as="ul" className="space-y-5">
             {items.map((item) => (
               <li key={item.label} className="border-b border-white/10 pb-5">
                 <p className="text-sm font-semibold uppercase tracking-wide text-amarillo">
@@ -47,9 +48,9 @@ export default function Contacto() {
                 )}
               </li>
             ))}
-          </ul>
+          </Reveal>
 
-          <div className="overflow-hidden rounded-2xl border border-white/10">
+          <Reveal variante="right" className="overflow-hidden rounded-2xl border border-white/10">
             <iframe
               title="Ubicación de Bike Setting en El Ángel, Carchi"
               src={contacto.mapsEmbedUrl}
@@ -57,7 +58,7 @@ export default function Contacto() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { servicios, type IconoServicio } from '@/data/servicios';
+import Reveal from './Reveal';
 
 function Icono({ tipo }: { tipo: IconoServicio }) {
   const common = {
@@ -61,7 +62,7 @@ export default function Servicios() {
   return (
     <section id="servicios" className="bg-negro py-20">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl">
           <h2 className="text-3xl font-bold sm:text-4xl">
             Nuestros <span className="text-amarillo">servicios</span>
           </h2>
@@ -69,20 +70,19 @@ export default function Servicios() {
             Soluciones completas para tu bicicleta, desde el mantenimiento preventivo
             hasta el acompañamiento en ruta.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {servicios.map((s) => (
-            <article
-              key={s.nombre}
-              className="group rounded-2xl border border-white/10 bg-negro-soft p-6 transition-colors hover:border-amarillo/60"
-            >
-              <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-amarillo/10 text-amarillo transition-colors group-hover:bg-amarillo group-hover:text-negro">
-                <Icono tipo={s.icono} />
-              </div>
-              <h3 className="text-xl font-semibold text-blanco">{s.nombre}</h3>
-              <p className="mt-2 text-sm text-blanco/70">{s.descripcion}</p>
-            </article>
+          {servicios.map((s, i) => (
+            <Reveal key={s.nombre} delay={i * 120} className="h-full">
+              <article className="group h-full rounded-2xl border border-white/10 bg-negro-soft p-6 transition-all duration-300 hover:-translate-y-2 hover:border-amarillo/60 hover:shadow-[0_0_30px_-5px_rgba(255,203,5,0.35)]">
+                <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-amarillo/10 text-amarillo transition-all duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-amarillo group-hover:text-negro">
+                  <Icono tipo={s.icono} />
+                </div>
+                <h3 className="text-xl font-semibold text-blanco">{s.nombre}</h3>
+                <p className="mt-2 text-sm text-blanco/70">{s.descripcion}</p>
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>

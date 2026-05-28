@@ -1,4 +1,5 @@
 import { eventos, type TipoEvento } from '@/data/eventos';
+import Reveal from './Reveal';
 
 const estiloTipo: Record<TipoEvento, { label: string; clase: string }> = {
   cicleada: { label: 'Cicleada nocturna', clase: 'bg-amarillo/15 text-amarillo' },
@@ -10,7 +11,7 @@ export default function Eventos() {
   return (
     <section id="eventos" className="bg-negro-soft py-20">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl">
           <h2 className="text-3xl font-bold sm:text-4xl">
             Próximos <span className="text-amarillo">eventos</span>
           </h2>
@@ -18,7 +19,7 @@ export default function Eventos() {
             Cicleadas nocturnas, ciclopaseos y carreras. Únete a la comunidad ciclista de
             El Ángel.
           </p>
-        </div>
+        </Reveal>
 
         {eventos.length === 0 ? (
           <div className="mt-12 rounded-2xl border border-dashed border-white/20 bg-negro p-12 text-center">
@@ -33,20 +34,19 @@ export default function Eventos() {
             {eventos.map((ev, i) => {
               const tipo = estiloTipo[ev.tipo];
               return (
-                <article
-                  key={`${ev.titulo}-${i}`}
-                  className="flex flex-col rounded-2xl border border-white/10 bg-negro p-6"
-                >
-                  <span
-                    className={`inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold ${tipo.clase}`}
-                  >
-                    {tipo.label}
-                  </span>
-                  <h3 className="mt-4 text-xl font-semibold text-blanco">{ev.titulo}</h3>
-                  <p className="mt-1 text-sm font-medium text-amarillo">{ev.fecha}</p>
-                  <p className="mt-1 text-sm text-blanco/60">{ev.lugar}</p>
-                  <p className="mt-3 text-sm text-blanco/70">{ev.descripcion}</p>
-                </article>
+                <Reveal key={`${ev.titulo}-${i}`} delay={i * 120} className="h-full">
+                  <article className="borde-anim flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-negro p-6 transition-colors duration-300 hover:border-amarillo/40">
+                    <span
+                      className={`inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold ${tipo.clase}`}
+                    >
+                      {tipo.label}
+                    </span>
+                    <h3 className="mt-4 text-xl font-semibold text-blanco">{ev.titulo}</h3>
+                    <p className="mt-1 text-sm font-medium text-amarillo">{ev.fecha}</p>
+                    <p className="mt-1 text-sm text-blanco/60">{ev.lugar}</p>
+                    <p className="mt-3 text-sm text-blanco/70">{ev.descripcion}</p>
+                  </article>
+                </Reveal>
               );
             })}
           </div>

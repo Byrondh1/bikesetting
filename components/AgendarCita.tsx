@@ -129,7 +129,7 @@ export default function AgendarCita() {
           <div className="sm:col-span-2">
             <button
               type="submit"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-amarillo px-7 py-3 font-bold text-negro transition-colors hover:bg-amarillo-dark sm:w-auto"
+              className="btn-shine inline-flex w-full items-center justify-center gap-2 rounded-full bg-amarillo px-7 py-3 font-bold text-negro transition-transform hover:-translate-y-0.5 hover:bg-amarillo-dark sm:w-auto"
             >
               Enviar por WhatsApp
             </button>
